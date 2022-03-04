@@ -1,0 +1,26 @@
+const { HTTP_STATUS } = require('@/config/enum');
+
+function generateResponse(res, result) {
+    let status;
+    let message;
+
+    if (result instanceof Error) {
+        status = HTTP_STATUS.INTERNAL_SERVER_ERROR;
+        message = result.message;
+    } else if (result === undefined) {
+        status = HTTP_STATUS.OK;
+        message = 'OK';
+    } else if (result === null) {
+        status = HTTP_STATUS.NOT_FOUND;
+        message = 'Not found';
+    } else {
+        status = HTTP_STATUS.OK;
+        message = result;
+    }
+
+    const msg = { status, message };
+
+    res.json(msg);
+}
+
+module.exports = generateResponse;
