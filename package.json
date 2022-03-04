@@ -1,0 +1,28 @@
+{
+    "name": "service-template",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "devStart": "nodemon -r dotenv/config -r module-alias/register app.js",
+        "fmt": "npx prettier --write **/*.js",
+        "start": "node -r module-alias/register app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^16.0.0",
+        "express": "^4.17.3",
+        "module-alias": "^2.2.2",
+        "mongoose": "^6.2.4"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15",
+        "prettier": "^2.5.1"
+    },
+    "_moduleAliases": {
+        "@": "."
+    }
+}
