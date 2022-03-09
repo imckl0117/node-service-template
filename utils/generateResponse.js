@@ -20,7 +20,7 @@ function generateResponse(res, result) {
 
     const msg = { status, message };
 
-    res.json(msg);
+    res.status(status).json(msg);
 }
 
 module.exports = generateResponse;
