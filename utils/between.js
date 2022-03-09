@@ -1,11 +1,27 @@
-function between(min, max, { includeStart = true, includeEnd = true } = {}) {
-    const minNum = Number(min);
-    const maxNum = Number(max);
+function between(
+    min,
+    max,
+    { dataType = 'number', includeStart = true, includeEnd = true } = {}
+) {
+    let minValue, maxValue;
+
+    switch (dataType) {
+        case 'number':
+            minValue = Number(min);
+            maxValue = Number(max);
+
+            break;
+        case 'date':
+            minValue = new Date(min);
+            maxValue = new Date(max);
+
+            break;
+    }
 
     const greaterThanOperator = includeStart ? '$gte' : '$gt';
     const lessThanOperator = includeEnd ? '$lte' : '$lt';
 
-    return { [greaterThanOperator]: minNum, [lessThanOperator]: maxNum };
+    return { [greaterThanOperator]: minValue, [lessThanOperator]: maxValue };
 }
 
 module.exports = between;
