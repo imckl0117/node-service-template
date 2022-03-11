@@ -1,16 +1,17 @@
 const { Router } = require('express');
 
-const helloService = require('@/services/hello');
+const personService = require('@/services/person');
+
 const generateResponse = require('@/utils/generateResponse');
 
 const router = Router();
 
 router.get('/', async (req, res) => {
-    const { name } = req.query;
+    const { designation, email, mobile_no, name } = req.query;
 
-    const params = { name };
+    const params = { designation, email, mobile_no, name };
 
-    const result = await helloService.sayHello(params);
+    const result = await personService.getList(params);
 
     generateResponse(res, result);
 });
