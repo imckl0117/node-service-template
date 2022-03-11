@@ -3,6 +3,18 @@ const personRepository = require('@/repositories/person');
 const like = require('@/utils/like');
 
 const personService = {
+    async create({ designation, email, mobile_no, name }) {
+        try {
+            const document = { designation, email, mobile_no, name };
+
+            return await personRepository.create(document);
+        } catch (e) {
+            console.error(e);
+
+            return e;
+        }
+    },
+
     async getList({ designation, email, mobile_no, name, limit, skip }) {
         try {
             const filter = {};
