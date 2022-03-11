@@ -7,7 +7,7 @@ const personService = {
         try {
             const document = { designation, email, mobile_no, name };
 
-            return await personRepository.create(document);
+            return await personRepository.create({ document });
         } catch (e) {
             console.error(e);
 
