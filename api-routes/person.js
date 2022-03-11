@@ -7,9 +7,16 @@ const generateResponse = require('@/utils/generateResponse');
 const router = Router();
 
 router.get('/', async (req, res) => {
-    const { designation, email, mobile_no, name } = req.query;
+    const {
+        designation,
+        email,
+        mobile_no,
+        name,
+        limit = 0,
+        skip = 0,
+    } = req.query;
 
-    const params = { designation, email, mobile_no, name };
+    const params = { designation, email, mobile_no, name, limit, skip };
 
     const result = await personService.getList(params);
 

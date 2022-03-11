@@ -3,7 +3,7 @@ const personRepository = require('@/repositories/person');
 const like = require('@/utils/like');
 
 const personService = {
-    async getList({ designation, email, mobile_no, name }) {
+    async getList({ designation, email, mobile_no, name, limit, skip }) {
         try {
             const filter = {};
 
@@ -12,7 +12,11 @@ const personService = {
             if (mobile_no) filter.mobile_no = like(mobile_no);
             if (name) filter.name = like(name);
 
-            return await personRepository.find(filter);
+            return await personRepository.find({
+                filter,
+                limit: Number(limit),
+                skip: Number(skip),
+            });
         } catch (e) {
             console.error(e);
 
