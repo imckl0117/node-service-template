@@ -23,4 +23,14 @@ router.get('/', async (req, res) => {
     generateResponse(res, result);
 });
 
+router.get('/count', async (req, res) => {
+    const { designation, email, mobile_no, name } = req.query;
+
+    const params = { designation, email, mobile_no, name };
+
+    const result = await personService.getListCount(params);
+
+    generateResponse(res, result);
+});
+
 module.exports = router;
