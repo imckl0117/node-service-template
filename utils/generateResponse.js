@@ -1,4 +1,4 @@
-const { HTTP_STATUS } = require('@/config/enum');
+const { HTTP_STATUS } = require('@/config/constant/enum');
 
 function generateResponse(res, result) {
     let status;

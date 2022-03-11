@@ -1,4 +1,4 @@
-const { API_KEY } = require('@/config/server');
+const { API_KEY } = require('@/config/constant/server');
 
 function checkApiKey(req, res, next) {
     const apiKey = req.headers['x-api-key'];

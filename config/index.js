@@ -1,7 +1,5 @@
-const server = require('./server');
-const enum = require('./enum');
+const constant = require('./constant');
 
 module.exports = {
-    server,
-    enum,
+    constant,
 };

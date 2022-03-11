@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { SERVER_PORT } = require('@/config/server');
+const { SERVER_PORT } = require('@/config/constant/server');
 
 const app = express();
 
