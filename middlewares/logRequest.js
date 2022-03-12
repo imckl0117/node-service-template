@@ -1,7 +1,9 @@
+const logger = require('@/utils/logger');
+
 function logRequest(req, res, next) {
     const { method, originalUrl } = req;
 
-    console.log(`${method} ${originalUrl}`);
+    logger.info(`${method} ${originalUrl}`);
 
     next();
 }

@@ -4,6 +4,7 @@ const flattenObject = require('./flattenObject');
 const generateResponse = require('./generateResponse');
 const inArray = require('./inArray');
 const like = require('./like');
+const logger = require('./logger');
 
 module.exports = {
     between,
@@ -12,4 +13,5 @@ module.exports = {
     generateResponse,
     inArray,
     like,
+    logger,
 };

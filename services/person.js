@@ -1,6 +1,6 @@
 const personRepository = require('@/repositories/person');
 
-const like = require('@/utils/like');
+const { like, logger } = require('@/utils');
 
 const personService = {
     async create({ designation, email, mobile_no, name }) {
@@ -9,7 +9,7 @@ const personService = {
 
             return await personRepository.create({ document });
         } catch (e) {
-            console.error(e);
+            logger.error(e);
 
             return e;
         }
@@ -30,7 +30,7 @@ const personService = {
                 skip: Number(skip),
             });
         } catch (e) {
-            console.error(e);
+            logger.error(e);
 
             return e;
         }
@@ -47,7 +47,7 @@ const personService = {
 
             return await personRepository.count({ filter });
         } catch (e) {
-            console.error(e);
+            logger.error(e);
 
             return e;
         }
