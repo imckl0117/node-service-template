@@ -5,6 +5,7 @@ const {
     inArray,
     like,
     logger,
+    uuid,
 } = require('@/utils');
 
 class BaseService {
@@ -16,6 +17,7 @@ class BaseService {
             inArray,
             like,
             logger,
+            uuid,
         };
     }
 }

@@ -5,6 +5,7 @@ const generateResponse = require('./generateResponse');
 const inArray = require('./inArray');
 const like = require('./like');
 const logger = require('./logger');
+const uuid = require('./uuid');
 
 module.exports = {
     between,
@@ -14,4 +15,5 @@ module.exports = {
     inArray,
     like,
     logger,
+    uuid,
 };
