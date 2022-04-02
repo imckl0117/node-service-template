@@ -20,6 +20,18 @@ class PersonService extends BaseService {
         }
     }
 
+    async get({ id }) {
+        try {
+            const filter = { id };
+
+            return await this.personRepository.findOne(filter);
+        } catch (e) {
+            this.util.logger.error(e);
+
+            return e;
+        }
+    }
+
     async getList({ designation, email, mobile_no, name, limit, skip }) {
         try {
             const filter = {};

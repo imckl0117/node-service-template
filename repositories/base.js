@@ -11,6 +11,10 @@ class BaseRepository {
         return await this.model.find(filter, fields).skip(skip).limit(limit);
     }
 
+    async findOne({ filter, fields = { _id: 0 } }) {
+        return await this.model.findOne(filter, fields);
+    }
+
     async count({ filter = {} }) {
         return await this.model.countDocuments(filter);
     }

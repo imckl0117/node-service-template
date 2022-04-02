@@ -35,6 +35,16 @@ router.get('/count', async (req, res) => {
     generateResponse(res, result);
 });
 
+router.get('/:id', async (req, res) => {
+    const { id } = req.params;
+
+    const params = { id };
+
+    const result = await personService.get(params);
+
+    generateResponse(res, result);
+});
+
 router.post('/', async (req, res) => {
     const { designation, email, mobile_no, name } = req.body;
 
