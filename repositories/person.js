@@ -1,17 +1,11 @@
 const personModel = require('@/models/person');
 
-const personRepository = {
-    async count({ filter = {} } = {}) {
-        return await personModel.countDocuments(filter);
-    },
+const BaseRepository = require('./base');
 
-    async create({ document }) {
-        return await personModel.create(document);
-    },
+class PersonRepository extends BaseRepository {
+    constructor() {
+        super(personModel);
+    }
+}
 
-    async find({ filter = {}, limit = 0, skip = 0 } = {}) {
-        return await personModel.find(filter).skip(skip).limit(limit);
-    },
-};
-
-module.exports = personRepository;
+module.exports = new PersonRepository();
