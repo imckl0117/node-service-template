@@ -3,9 +3,9 @@ const personModel = require('@/models/person');
 const BaseRepository = require('./base');
 
 class PersonRepository extends BaseRepository {
-    constructor() {
+    constructor(personModel) {
         super(personModel);
     }
 }
 
-module.exports = new PersonRepository();
+module.exports = new PersonRepository(personModel);
