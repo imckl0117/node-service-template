@@ -1,7 +1,5 @@
 const personRepository = require('@/repositories/person');
 
-const { like, logger } = require('@/utils');
-
 const BaseService = require('./base');
 
 class PersonService extends BaseService {
@@ -16,7 +14,7 @@ class PersonService extends BaseService {
 
             return await this.personRepository.create({ document });
         } catch (e) {
-            logger.error(e);
+            this.util.logger.error(e);
 
             return e;
         }
@@ -26,10 +24,10 @@ class PersonService extends BaseService {
         try {
             const filter = {};
 
-            if (designation) filter.designation = like(designation);
-            if (email) filter.email = like(email);
-            if (mobile_no) filter.mobile_no = like(mobile_no);
-            if (name) filter.name = like(name);
+            if (designation) filter.designation = this.util.like(designation);
+            if (email) filter.email = this.util.like(email);
+            if (mobile_no) filter.mobile_no = this.util.like(mobile_no);
+            if (name) filter.name = this.util.like(name);
 
             return await this.personRepository.find({
                 filter,
@@ -37,7 +35,7 @@ class PersonService extends BaseService {
                 skip: Number(skip),
             });
         } catch (e) {
-            logger.error(e);
+            this.util.logger.error(e);
 
             return e;
         }
@@ -47,14 +45,14 @@ class PersonService extends BaseService {
         try {
             const filter = {};
 
-            if (designation) filter.designation = like(designation);
-            if (email) filter.email = like(email);
-            if (mobile_no) filter.mobile_no = like(mobile_no);
-            if (name) filter.name = like(name);
+            if (designation) filter.designation = this.util.like(designation);
+            if (email) filter.email = this.util.like(email);
+            if (mobile_no) filter.mobile_no = this.util.like(mobile_no);
+            if (name) filter.name = this.util.like(name);
 
             return await this.personRepository.count({ filter });
         } catch (e) {
-            logger.error(e);
+            this.util.logger.error(e);
 
             return e;
         }
