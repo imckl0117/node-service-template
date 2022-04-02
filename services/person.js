@@ -2,18 +2,25 @@ const personRepository = require('@/repositories/person');
 
 const { like, logger } = require('@/utils');
 
-const personService = {
+const BaseService = require('./base');
+
+class PersonService extends BaseService {
+    constructor(personRepository) {
+        super();
+        this.personRepository = personRepository;
+    }
+
     async create({ designation, email, mobile_no, name }) {
         try {
             const document = { designation, email, mobile_no, name };
 
-            return await personRepository.create({ document });
+            return await this.personRepository.create({ document });
         } catch (e) {
             logger.error(e);
 
             return e;
         }
-    },
+    }
 
     async getList({ designation, email, mobile_no, name, limit, skip }) {
         try {
@@ -24,7 +31,7 @@ const personService = {
             if (mobile_no) filter.mobile_no = like(mobile_no);
             if (name) filter.name = like(name);
 
-            return await personRepository.find({
+            return await this.personRepository.find({
                 filter,
                 limit: Number(limit),
                 skip: Number(skip),
@@ -34,7 +41,7 @@ const personService = {
 
             return e;
         }
-    },
+    }
 
     async getListCount({ designation, email, mobile_no, name }) {
         try {
@@ -45,13 +52,13 @@ const personService = {
             if (mobile_no) filter.mobile_no = like(mobile_no);
             if (name) filter.name = like(name);
 
-            return await personRepository.count({ filter });
+            return await this.personRepository.count({ filter });
         } catch (e) {
             logger.error(e);
 
             return e;
         }
-    },
-};
+    }
+}
 
-module.exports = personService;
+module.exports = new PersonService(personRepository);
